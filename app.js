@@ -1,3 +1,4 @@
+
 let playerScore = 0
 let questAns = [
     {
@@ -21,7 +22,7 @@ let questAns = [
 
     },
     {
-        context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur",
+        context: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</p>",
         question: "What alignment is this called?",
         answers: [{
                 answer: "Justified Font",
@@ -99,7 +100,7 @@ let questAns = [
     	],
 
     }, {
-        context: `<p>Player Score ${playerScore}`,
+        context: `<p></p>`,
         question: "Thanks for playing"
     }
 ]
@@ -135,26 +136,27 @@ let populateAns = function () {
 //Move to the next level of the game and populate its 
 //game state. Is only called when $.nextB is clicked
 let cssAdjust = function () {
-    console.log(arrVal)
-    if (arrVal === 1) {
-        $(".contextBox").css({
+    if (arrVal === 0) {
+        console.log("Hello")
+        $(".contextBox p").css({
+            "font-size": "32em",
+        })
+    }
+    else if (arrVal === 1) {
+        $(".contextBox p").css({
             "text-align": "justify",
-            "font-size": "1em",
-            "padding": "5%"
+            "padding": "10%"
         })
 
     } else if (arrVal === 2) {
         $(".contextBox p").css({
             "font-family": "Ani",
-            "font-size": "1em",
-            "padding": "5%"
+            "padding": "10%"
         })
     } else if (arrVal === 3) {
         $(".contextBox p").css({
             "font-family": "",
             "letter-spacing": ".9em",
-            "font-size": "1em",
-            "padding": "5%"
         })
     } else if (arrVal === 4) {
         $(".contextBox p").css({
@@ -178,6 +180,7 @@ let questUpdate = function () {
     quest = questAns[arrVal]
     context()
     cssAdjust()
+    //If we are on the screen before the last one do not populate answers
     if (arrVal <= 4) {
         populateAns()
         answersCleanUp()
@@ -195,6 +198,11 @@ let populateQuestion = function () {
 //clear the context area of the DOM
 let context = function () {
     $(".contextBox").text(" ").append(quest.context)
+    //End screen score display and styles for it
+    if (arrVal > 4) {
+        $(".contextBox").text(`Player Score ${playerScore}`)
+        $(".contextBox").css("font-size", "3em")
+    }
 }
 
 //When next is clicked, if the hidden bool is false the answers will be hidden
@@ -216,7 +224,10 @@ let answersCleanUp = function () {
             hidden = false
         }
     } else {
-        endGame()
+        //Else condition that says if the game is on the last level and an answer is selected
+        //hide the next button and update our level so we push in our context
+        nextB.hide()
+        questUpdate()
     }
 }
 
@@ -225,19 +236,12 @@ let answersCleanUp = function () {
 //words go to the next level
 //*******
 nextB.click(function () {
+    //Only move to next level if you are not on the last level
     if (arrVal <= 5) {
         questUpdate()
     }
 })
 
-let endGame = function () {
-    questUpdate()
-    console.log("SHOOOOT ME")
-    nextB.hide()
-    $(".answers p").not("h2").hide()
-    $(".answers h2").text("Thanks for Playing!").css("border-bottom", "none")
-    $(".contextBox").text(`You scored ${playerScore} out 5 points`)
-}
 
 let findAnswer = function () {
 
@@ -255,10 +259,13 @@ let findAnswer = function () {
     }
 }
 
+//Initates the game by setting the button logic, populating the answers
+//the context and question.
 let gameBegin = function () {
     findAnswer()
     populateAns()
     context()
+    cssAdjust()
     //move on to the next element in the question array and
     //ask a new question and receive new answers
     populateQuestion()
