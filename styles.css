@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+}
+
+
+.mainCon {
+    background-image: url(image_files/vintage-concrete.png);
+    background-size: fixed;
+	height: 100%;
+}
+
+.contextBox {
+    background-color: #000000;
+    height:60vh;
+    font-family: 'Rokkitt', serif;
+    color:#FFFFFF
+}
+
+.contextBox p {
+    display: block;
+    align-items: center;
+    font-size: 32rem;
+}
+
+.miscBox {
+    background-color:#FFFFFF;
+    height:40vh;
+}
+
+.infoBox {
+    background-color:#000000;
+   height: 40vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
+
+}
+.infoText{
+    overflow: hidden;
+    display: block;
+    width: 50%;
+    font-size: .9em;
+    
+}
+.innerText{
+    display: block;
+}
+.answerBox {
+    padding: 5%;
+    color:black;
+    height: 60vh;
+    font-family: 'Poppins', sans-serif;
+    font-size:2em;
+    background-color:#FFFFFF;
+}
+.answers h2{
+    border-bottom: solid 2px black;
+}
+.answers span, .nextB{
+    transition: .2s;
+}
+.answers span:hover, .nextB:hover{
+    font-size:1.1em;
+    transition: .2s;
+    cursor: pointer;
+}
+.nextB{
+    text-align: right;
+    display: none;
+    padding: 0;
+border: none;
+background: none;
+}
