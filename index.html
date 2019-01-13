@@ -2,21 +2,29 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta lang="en">
     <title>Quiz</title>
     <link href="styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Rokkitt|Great+Vibes" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
 </head>
 
 <body>
-    <header></header>
     <section class="mainCon container-fluid">
+        <section class="row startScreen text-center align-content-center">
+            <div class="col-12 p-5">
+                <h1 style="font-size:5em">Typography Quiz of Doom</h1>
+            </div>
+            <div class="col-4 offset-4 pull-4">
+            <h2>Designed By: AJ Humphries</h2>
+            </div>
+            <button class="col-4 offset-4 btn btn-outline-dark" style="font-size: 2em">Start</button>
+        </section>
         <div class="row">
 
-            <div class="col-md-6">
+            <section class="col-md-6">
                 <div class="row">
-
                     <div class="col-12 contextBox d-flex justify-content-center align-items-center">
                     </div>
                     <div class="col-12 infoBox d-flex justify-content-center align-items-center">
@@ -26,27 +34,29 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
+            </section>
+            
+            <section class="col-md-6">
                 <div class="row d-flex justify-content-around">
-
                     <div class="col-12 miscBox">
                     </div>
-                    <div class="col-12 answerBox d-flex justify-content-center align-items-center">
-                        <div class="answers">
+                    <div class="col-12 answerBox ">
+                        <article class="answers d-flex flex-column justify-content-center align-content-center">
                             <h2>Choose your answer</h2>
                             <p>A: <span id="0" class="ansA"> </span></p>
                             <p>B: <span id="1" class="ansB"> </span></p>
                             <p>C: <span id="2" class="ansC"> </span></p>
                             <p>D: <span id="3" class="ansD"> </span></p>
                             <button class="nextB">Next Question</button>
-                        </div>
+                            <h3 class="gring text-center"></h3>
+                        </article>
                     </div>
                 </div>
-            </div>
+            </section>
+            
         </div>
     </section>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
 </body>
 

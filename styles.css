@@ -4,9 +4,23 @@
 
 
 .mainCon {
-    background-image: url(image_files/vintage-concrete.png);
-    background-size: fixed;
+    overflow: hidden;
+    height: 100vh;
+}
+.startScreen {
     height: 100%;
+    background-image: url(https://st.depositphotos.com/2850099/4952/i/950/depositphotos_49520069-stock-photo-white-canvas-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: robbit;
+}
+
+.startScreenAni {
+    animation: 1s linear slideUp forwards;
+}
+
+.startScreen button {
+    background-color: none;
 }
 
 .contextBox {
@@ -20,6 +34,7 @@
     align-items: center;
     font-size: 1rem;
     animation: 1s linear fadeIn;
+    padding: 10%;
 }
 
 .miscBox {
@@ -45,40 +60,73 @@
     color: black;
     height: 60vh;
     font-family: 'Poppins', sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     background-color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.answers {
+    height: 100%;
+    width: 100%;
+    padding: 15%;
 }
 
 .answers h2 {
+    padding: 2%;
     border-bottom: solid 2px black;
 }
-.answers p{
+
+.answers p {
+    height: 1.5em;
     animation: 1s linear fadeIn;
 }
+
 .answers span,
 .nextB {
     transition: .2s;
 }
 
-.answers span:hover,
-.nextB:hover {
+.answers span:hover {
     font-size: 1.1em;
     transition: .2s;
     cursor: pointer;
+    transform-origin: center;
 }
 
 .nextB {
-    text-align: right;
+    font-size: 1.5em;
     display: none;
     padding: 0;
     border: none;
     background: none;
+    margin: 0 0 2% 0;
 }
-@keyframes fadeIn{
-    from{
+
+.nextB:hover {
+    font-size: 1.7em;
+    cursor: pointer;
+}
+
+.answers h3 {
+    font-style: italic;
+}
+
+@keyframes slideUp {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
